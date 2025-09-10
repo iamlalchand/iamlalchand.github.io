@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Events - All Solutions in One Place | Jaipur</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53, #ffd93d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff6b6b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ff6b6b" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ff6b6b" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="300" cy="700" r="120" fill="url(%23a)"/><circle cx="700" cy="800" r="180" fill="url(%23a)"/></svg>') center/cover;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: slideInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: slideInUp 1s ease 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            animation: slideInUp 1s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideInUp 1s ease 0.6s both;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53, #ffd93d);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.3rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+
+        /* Event Types */
+        .event-types {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            position: relative;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+        }
+
+        .event-card:hover {
+            transform: scale(1.05);
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            z-index: 1;
+        }
+
+        .event-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            color: white;
+            z-index: 2;
+        }
+
+        .event-card h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-card p {
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53, #ffd93d, #4ecdc4, #45b7d1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: #ff6b6b;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .testimonial-content {
+            margin-bottom: 1rem;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .stars {
+            color: #ffd93d;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #ffd93d;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: #ffd93d;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ffd93d;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Floating Action Buttons */
+        .floating-actions {
+            position: fixed;
+            right: 2rem;
+            bottom: 2rem;
+            z-index: 1000;
+        }
+
+        .floating-btn {
+            display: block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp {
+            background: #25d366;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .call {
+            background: #ff6b6b;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+        }
+
+        /* Urgent Offer Banner */
+        .urgent-banner {
+            position: fixed;
+            top: 80px;
+            right: -300px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px 0 0 10px;
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+            z-index: 999;
+            transition: all 0.5s ease;
+            animation: slideInOffer 3s ease 2s forwards;
+        }
+
+        @keyframes slideInOffer {
+            to { right: 0; }
+        }
+
+        .urgent-banner h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .urgent-banner p {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .urgent-banner small {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .floating-actions {
+                right: 1rem;
+                bottom: 1rem;
+            }
+            
+            .urgent-banner {
+                position: relative;
+                right: 0;
+                top: 0;
+                border-radius: 10px;
+                margin: 1rem;
+                animation: none;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🎉 Dream Events</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="tel:7891867859" class="cta-button">📞 Book Now!</a>
+        </div>
+    </nav>
+
+    <!-- Urgent Offer Banner -->
+    <div class="urgent-banner">
+        <h4>🔥 LIMITED TIME OFFER!</h4>
+        <p>Book any event TODAY and get <strong>25% OFF</strong></p>
+        <small>*Valid till this month end</small>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>All Solutions in One Place</h1>
+            <div class="hero-subtitle">🌟 Dream Events - Your Complete Event Partner 🌟</div>
+            <p>From magical decorations to delicious catering, from stunning varmala ceremonies to artistic mehandi designs - we handle everything so you can just celebrate!</p>
+            <div class="hero-buttons">
+                <a href="tel:7891867859" class="btn-primary">📞 Call Now - Instant Quote!</a>
+                <a href="https://wa.me/917891867859?text=Hi!%20I%20want%20to%20book%20an%20event%20immediately!" class="btn-secondary">💬 WhatsApp for 25% OFF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Complete Event Solutions</h2>
+                <p>Everything you need for the perfect celebration under one roof</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">🎈</span>
+                    <h3>Premium Decorations</h3>
+                    <p>Transform your venue into a magical wonderland with our stunning decoration packages.</p>
+                    <ul class="service-features">
+                        <li>Balloon arrangements & arches</li>
+                        <li>Floral decorations</li>
+                        <li>Stage setup & backdrop</li>
+                        <li>Lighting & ambiance</li>
+                        <li>Theme-based decorations</li>
+                    </ul>
+                    <div class="service-price">Starting ₹15,000</div>
+                    <a href="tel:7891867859" class="btn-primary">Book Now</a>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">💐</span>
+                    <h3>Varmala & Special Entry</h3>
+                    <p>Make your special moments unforgettable with grand entries and beautiful varmala ceremonies.</p>
+                    <ul class="service-features">
+                        <li>Foam entry with music</li>
+                        <li>Designer varmala</li>
+                        <li>Special seating arrangements</li>
+                        <li>Photography coordination</li>
+                        <li>Traditional & modern styles</li>
+                    </ul>
+                    <div class="service-price">Starting ₹8,000</div>
+                    <a href="tel:7891867859" class="btn-primary">Book Now</a>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🎨</span>
+                    <h3>Mehandi Artists</h3>
+                    <p>Skilled artists creating beautiful mehandi designs for all your special occasions.</p>
+                    <ul class="service-features">
+                        <li>Bridal mehandi designs</li>
+                        <li>Simple & intricate patterns</li>
+                        <li>Arabic & traditional styles</li>
+                        <li>Quick & detailed work</li>
+                        <li>Natural henna guaranteed</li>
+                    </ul>
+                    <div class="service-price">Starting ₹500/person</div>
+                    <a href="tel:7891867859" class="btn-primary">Book Now</a>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🍽️</span>
+                    <h3>Premium Catering</h3>
+                    <p>Delicious multi-cuisine catering services that will leave your guests impressed.</p>
+                    <ul class="service-features">
+                        <li>North & South Indian cuisine</li>
+                        <li>Chinese & Continental</li>
+                        <li>Live counters & chat stalls</li>
+                        <li>Dessert & beverage stations</li>
+                        <li>Professional service staff</li>
+                    </ul>
+                    <div class="service-price">Starting ₹300/plate</div>
+                    <a href="tel:7891867859" class="btn-primary">Book Now</a>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">🎵</span>
+                    <h3>Entertainment & Music</h3>
+                    <p>Complete entertainment solutions with professional sound systems and performers.</p>
+                    <ul class="service-features">
+                        <li>DJ & sound system</li>
+                        <li>Live band performances</li>
+                        <li>Dance performances</li>
+                        <li>Games & activities</li>
+                        <li>MC & anchoring</li>
+                    </ul>
+                    <div class="service-price">Starting ₹12,000</div>
+                    <a href="tel:7891867859" class="btn-primary">Book Now</a>
+                </div>
+
+                <div class="service-card">
+                    <span class="service-icon">📸</span>
+                    <h3>Photography & Videography</h3>
+                    <p>Capture every precious moment with our professional photography and videography services.</p>
+                    <ul class="service-features">
+                        <li>Pre-event photoshoot</li>
+                        <li>Candid photography</li>
+                        <li>4K videography</li>
+                        <li>Drone shots</li>
+                        <li>Same day editing</li>
+                    </ul>
+                    <div class="service-price">Starting ₹20,000</div>
+                    <a href="tel:7891867859" class="btn-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Types -->
+    <section class="event-types" id="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>We Celebrate Everything!</h2>
+                <p>No matter what the occasion, we make it extraordinary</p>
+            </div>
+            
+            <div class="event-grid">
+                <div class="event-card" style="background: linear-gradient(135deg, #ff6b6b, #ff8e53);">
+                    <div class="event-content">
+                        <h3>🎂 Birthday Celebrations</h3>
+                        <p>From kids' themed parties to milestone birthdays, we create magical memories that last forever.</p>
+                    </div>
+                </div>
+
+                <div class="event-card" style="background: linear-gradient(135deg, #4ecdc4, #44a08d);">
+                    <div class="event-content">
+                        <h3>💕 Anniversary Parties</h3>
+                        <p>Celebrate love and togetherness with our romantic and elegant anniversary celebration packages.</p>
+                    </div>
+                </div>
+
+                <div class="event-card" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                    <div class="event-content">
+                        <h3>🏢 Corporate Events</h3>
+                        <p>Grand opening ceremonies, office parties, and corporate celebrations with professional touch.</p>
+                    </div>
+                </div>
+
+                <div class="event-card" style="background: linear-gradient(135deg, #ffd93d, #ff8e53);">
+                    <div class="event-content">
+                        <h3>💒 Wedding Functions</h3>
+                        <p>Complete wedding planning from mehandi to reception. Your dream wedding awaits!</p>
+                    </div>
+                </div>
+
+                <div class="event-card" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">
+                    <div class="event-content">
+                        <h3>🎓 Special Occasions</h3>
+                        <p>Graduations, baby showers, festivals, and all other special moments in your life.</p>
+                    </div>
+                </div>
+
+                <div class="event-card" style="background: linear-gradient(135deg, #ff9a9e, #fecfef);">
+                    <div class="event-content">
+                        <h3>🎪 Theme Parties</h3>
+                        <p>Bollywood, retro, royal, garden - any theme you dream, we bring it to life!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title" style="color: white;">
+                <h2>Our Amazing Work</h2>
+                <p style="color: rgba(255,255,255,0.8);">See how we transform ordinary spaces into extraordinary celebrations</p>
+            </div>
+            
+            <div class="
