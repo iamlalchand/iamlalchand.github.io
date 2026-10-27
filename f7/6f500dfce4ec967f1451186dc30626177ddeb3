@@ -1,0 +1,28 @@
+index.html
+  s_11f4bece5de1d6::t_d7a657f0ceb3b9 7,1212,1246,1293,1299,1323,1405,1407,1409,1474,1476,1490,1492,1667
+  s_11f4bece5de1d6::t_cd260090f3bdcb 1145,1259
+  s_11f4bece5de1d6::t_c48eab92ba5a7c 1102-1104,1147-1148
+  s_11f4bece5de1d6::t_c2580695b7091c 1090-1098,1100-1101,1105-1109,1146
+  s_11f4bece5de1d6::t_b93d326a86bc91 121-124,1153
+  s_11f4bece5de1d6::t_2479636b4ce8c1 1149
+  s_11f4bece5de1d6::t_057fc5c7b3eb5f 1099,1150-1151
+  s_11f4bece5de1d6::t_b78e8f87f7e90f 33-34,41,72,81-85,1125,1711,1764-1766
+  s_11f4bece5de1d6::t_466d3724dda8d4 1690-1691,1699
+  s_11f4bece5de1d6::t_14015993e9e94f 1111-1115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f76f500dfce4ec967f1451186dc30626177ddeb3",
+  "prompts": {},
+  "sessions": {
+    "s_11f4bece5de1d6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db0dff31-f062-4c5a-b3c1-6c706ef3eb6d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Lalchand Prajapat <lalchand.prajapat@noitechnologies.com>"
+    }
+  }
+}
