@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lalchand Prajapat — Full Stack Engineer</title>
-    <meta name="description" content="Lalchand Prajapat — Full Stack Engineer (Java/Moqui + React/TypeScript) building enterprise-grade platforms. Founder of UtilityBox.">
+    <meta name="description" content="Lalchand Prajapat — Full Stack Engineer (Java + React/TypeScript) building enterprise-grade platforms. Founder of UtilityBox.">
     <meta name="theme-color" content="#0a0907">
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
     <link rel="preload" as="image" href="assets/lalchand.webp">
@@ -30,14 +30,15 @@
         }
 
         * { margin:0; padding:0; box-sizing:border-box; }
-        html { scroll-behavior:smooth; }
+        /* clip (not hidden) on body so it doesn't become a scroll container and break sticky cards */
+        html { scroll-behavior:smooth; overflow-x: hidden; }
 
         body {
             font-family: 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow-x: clip;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -68,7 +69,7 @@
 
         .grain {
             position: fixed;
-            inset: -50%;
+            inset: 0;
             pointer-events: none;
             z-index: 2;
             opacity: 0.06;
@@ -77,11 +78,11 @@
         }
 
         @keyframes grain {
-            0%   { transform: translate(0,0); }
-            25%  { transform: translate(-3%,2%); }
-            50%  { transform: translate(2%,-3%); }
-            75%  { transform: translate(-2%,-1%); }
-            100% { transform: translate(0,0); }
+            0%   { background-position: 0 0; }
+            25%  { background-position: -40px 30px; }
+            50%  { background-position: 30px -40px; }
+            75%  { background-position: -25px -15px; }
+            100% { background-position: 0 0; }
         }
 
         nav, section, footer { position: relative; z-index: 1; }
@@ -115,6 +116,10 @@
             margin: -3px 0 0 -3px;
             background: var(--gold2);
             box-shadow: 0 0 10px var(--gold);
+        }
+
+        @media (hover: none), (pointer: coarse) {
+            .cursor, .cursor-dot { display: none; }
         }
 
         @media (pointer: fine) {
@@ -1082,10 +1087,32 @@
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
-            .hero { grid-template-columns: 1fr; padding-top: 7rem; text-align: left; }
-            .stage { height: 78vh; min-height: 520px; margin: 0 -5%; }
+            /* small screens: heading and photo side by side, the rest full width below (no overlap) */
+            .hero {
+                display: grid;
+                grid-template-columns: 1fr 44%;
+                align-items: center;
+                column-gap: 0.5rem;
+                row-gap: 0;
+                min-height: 0;
+                padding: 6rem 5% 3rem;
+            }
+            .hero-content { display: contents; }
+            .hero-content > * { grid-column: 1 / -1; }
+            .hero-badge, .hero .kicker { display: none; }
+            .hero h1 { grid-column: 1; grid-row: 1; margin-bottom: 0; }
+            .stage { grid-column: 2; grid-row: 1; height: 46vh; min-height: 300px; max-height: 520px; margin: 0; }
+            .roles { margin-top: 1.5rem; }
+            .person { height: 100%; }
+            .spot { top: -20%; height: 125%; }
+            .floor { width: 90%; margin-left: -45%; }
+            .smoke { display: none; }
             .about-grid { grid-template-columns: 1fr; }
-            .frame-wrap { max-width: 420px; order: 0; }
+            .frame-wrap { max-width: 420px; width: 100%; margin: 0 auto; order: 0; }
+            .stage-quote, .scroll-cue { display: none; }
+            .roles { gap: 0.5rem 0.6rem; letter-spacing: 2px; }
+            .roles span + span::before { display: none; }
+            .roles span { padding: 0.35rem 0.6rem; border: 1px solid var(--line2); }
             .matrix { grid-template-columns: 1fr 1fr; }
             .pillar, .pillar.wide { grid-column: span 1; }
             .proj { grid-template-columns: 1fr; }
@@ -1095,7 +1122,7 @@
             .founder-left { border-right: none; border-bottom: 1px solid var(--line); }
         }
 
-        @media (max-width: 860px) {
+        @media (max-width: 1024px) {
             .nav-toggle { display: grid; place-items: center; }
             nav > .btn-outline { display: none; }
             .nav-links {
@@ -1115,11 +1142,15 @@
         }
 
         @media (max-width: 640px) {
-            section { padding: 90px 16px; }
-            .hero { padding: 6.5rem 16px 0; }
+            section { padding: 70px 16px; }
+            .hero { padding: 5rem 16px 2.5rem; grid-template-columns: 1fr 46%; }
+            .hero h1 { font-size: clamp(2rem, 10.5vw, 2.8rem); }
+            .stage { height: 42vh; min-height: 280px; }
+            .frame-wrap { order: -1; max-width: 300px; margin-bottom: 2.5rem; }
+            .hero-ctas { gap: 0.6rem; flex-wrap: nowrap; }
+            .hero-ctas .btn-outline { padding: 0.8rem 1rem; letter-spacing: 1.5px; font-size: 0.66rem; }
             nav, nav.scrolled { padding-left: 16px; padding-right: 16px; }
-            .stage { margin: 0 -16px; height: 70vh; }
-            .stage-quote { right: 16px; top: 30%; }
+            .founder-logo { width: 120px; height: 120px; }
             .signature { font-size: 2rem; }
             .stats { grid-template-columns: 1fr 1fr; row-gap: 1.6rem; }
             .matrix { grid-template-columns: 1fr; }
@@ -1178,7 +1209,7 @@
             <span class="line"><span class="metal">Platforms</span></span>
         </h1>
         <div class="roles">
-            <span>Full Stack Engineer</span><span>Java / Moqui</span><span>React / TypeScript</span>
+            <span>Full Stack Engineer</span><span>Java / Groovy</span><span>React / TypeScript</span>
         </div>
         <p class="hero-sub">
             <strong id="hero-dur"></strong> of shipping production features for global platforms — where a powerful Java backend meets a clean React frontend, and integrations just work.
@@ -1212,7 +1243,7 @@
         <div class="about-text reveal">
             <div class="eyebrow">01 / About</div>
             <h2 class="display section-title">I don't just write code.<br><span class="metal">I build what's next.</span></h2>
-            <p>I'm <strong>Lalchand Prajapat</strong>, a Full Stack Engineer at <strong>NOI Technologies Pvt Ltd</strong>, delivering end-to-end features across backend (Java/Groovy/Moqui) and frontend (React 19/TypeScript) for multi-region enterprise platforms.</p>
+            <p>I'm <strong>Lalchand Prajapat</strong>, a Full Stack Engineer at <strong>NOI Technologies Pvt Ltd</strong>, delivering end-to-end features across backend (Java/Groovy) and frontend (React 19/TypeScript) for multi-region enterprise platforms.</p>
             <p>I've shipped production features for global platforms like <strong>Landmark Worldwide</strong> (North America, India, LATAM), integrated payment gateways (Stripe, Razorpay, Braintree), and connected third-party services like Twilio, QuickBooks, Etsy, and Walmart. I also leverage AI tools — Claude, ChatGPT, and GitHub Copilot — to accelerate development.</p>
             <p>Beyond my day job, I founded and independently built <strong>UtilityBox</strong> — a free, installable workspace with <strong>27 browser-based tools</strong>, requiring no sign-up.</p>
             <div class="stats">
@@ -1225,7 +1256,7 @@
         <div class="frame-wrap reveal" style="--d:0.15s">
             <span class="corner tl"></span>
             <div class="frame" id="frame">
-                <img src="assets/lalchand-portrait.webp" alt="Portrait of Lalchand Prajapat" loading="lazy" width="900" height="1180">
+                <img src="assets/lalchand-portrait.webp" alt="Portrait of Lalchand Prajapat" width="900" height="1065">
                 <div class="frame-sign metal">Lalchand</div>
             </div>
             <span class="corner br"></span>
@@ -1259,13 +1290,13 @@
                             <li>Multi-currency: INR (Razorpay), USD/CAD (Braintree)</li>
                         </ul>
                         <div class="tags">
-                            <span class="tag">Java</span><span class="tag">Stream API</span><span class="tag">Moqui 3.0</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Razorpay</span><span class="tag">Twilio</span>
+                            <span class="tag">Java</span><span class="tag">Stream API</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Razorpay</span><span class="tag">Twilio</span>
                         </div>
                     </div>
                     <div class="metrics">
                         <span class="micro">// Architecture metrics</span>
                         <div class="metric-row"><span>Regions</span><span>India · N. America · LATAM</span></div>
-                        <div class="metric-row"><span>Backend</span><span>Java · Moqui 3.0</span></div>
+                        <div class="metric-row"><span>Backend</span><span>Java · Groovy</span></div>
                         <div class="metric-row"><span>Frontend</span><span>React 19 · TypeScript</span></div>
                         <div class="metric-row"><span>Payments</span><span>Razorpay · Braintree</span></div>
                         <div class="big-num">01</div>
@@ -1289,7 +1320,7 @@
                             <li>Client billing, invoicing, and AI-powered analytics reporting</li>
                         </ul>
                         <div class="tags">
-                            <span class="tag">Java</span><span class="tag">Moqui</span><span class="tag">REST APIs</span><span class="tag">Walmart API</span><span class="tag">Etsy API</span><span class="tag">3PL / WMS</span>
+                            <span class="tag">Java</span><span class="tag">REST APIs</span><span class="tag">Walmart API</span><span class="tag">Etsy API</span><span class="tag">3PL / WMS</span>
                         </div>
                     </div>
                     <div class="metrics">
@@ -1371,11 +1402,11 @@
 
         <div class="matrix">
             <div class="pillar wide gcard reveal">
-                <div class="pillar-top lift"><span class="micro">Core pillar</span><span class="pillar-badge">10 tools</span></div>
+                <div class="pillar-top lift"><span class="micro">Core pillar</span><span class="pillar-badge">9 tools</span></div>
                 <h3 class="display lift">Backend Engineering</h3>
-                <p>REST APIs and enterprise services on Java, Groovy and the Moqui / OFBiz frameworks.</p>
+                <p>REST APIs and enterprise services on Java, Groovy and Apache OFBiz.</p>
                 <div class="tags">
-                    <span class="tag">Java</span><span class="tag">Groovy</span><span class="tag">Moqui Framework 3.0</span><span class="tag">Apache OFBiz</span><span class="tag">RESTful APIs</span><span class="tag">Java Stream API</span><span class="tag">Swagger / OpenAPI</span><span class="tag">Elasticsearch</span><span class="tag">Maven / Gradle</span><span class="tag">Microservices</span>
+                    <span class="tag">Java</span><span class="tag">Groovy</span><span class="tag">Apache OFBiz</span><span class="tag">RESTful APIs</span><span class="tag">Java Stream API</span><span class="tag">Swagger / OpenAPI</span><span class="tag">Elasticsearch</span><span class="tag">Maven / Gradle</span><span class="tag">Microservices</span>
                 </div>
             </div>
 
@@ -1440,9 +1471,9 @@
                     <span class="micro">NOI Technologies Pvt Ltd · Jaipur</span>
                     <p>Leading end-to-end feature delivery across Java/Groovy backend and React/TypeScript frontend for multi-region enterprise platforms.</p>
                     <ul class="bullets">
-                        <li>Built full-stack features using Moqui 3.0, React 19, TypeScript, and Redux</li>
+                        <li>Built full-stack features using Java, React 19, TypeScript, and Redux</li>
                         <li>Implemented Guest Invite system and Transfer Registration end-to-end for Landmark Worldwide (India, North America, LATAM)</li>
-                        <li>Developed Admin Console REST APIs replacing all mock data with live Moqui components</li>
+                        <li>Developed Admin Console REST APIs replacing all mock data with live backend services</li>
                         <li>Integrated payment gateways: Stripe, Razorpay, and Braintree with multi-currency support</li>
                         <li>Built third-party integrations — Twilio, QuickBooks, Etsy, and Walmart marketplace APIs</li>
                         <li>Leveraged Claude, Codex, and ChatGPT to accelerate development workflows</li>
@@ -1456,9 +1487,9 @@
                 <div class="tl-body">
                     <h3 class="display metal">Junior Software Engineer</h3>
                     <span class="micro">NOI Technologies Pvt Ltd · Jaipur</span>
-                    <p>Built strong backend foundations working on enterprise Java projects using Moqui Framework, REST APIs, and agile workflows.</p>
+                    <p>Built strong backend foundations working on enterprise Java projects using REST APIs, Groovy, and agile workflows.</p>
                     <ul class="bullets">
-                        <li>Developed and optimized REST APIs using Moqui, Apache OFBiz, Groovy, and Java</li>
+                        <li>Developed and optimized REST APIs using Apache OFBiz, Groovy, and Java</li>
                         <li>Contributed to SmartCity 24/7, NOGIN, and FulfillmentPlus platforms</li>
                         <li>Enhanced Agile practices and actively participated in Scrum ceremonies</li>
                         <li>Gained deep expertise in SQL, debugging, and enterprise application patterns</li>
@@ -1633,7 +1664,7 @@
     // ── Typewriter ──
     const roles = [
         'shipping features for Landmark Worldwide',
-        'building with Java, Moqui & React 19',
+        'building with Java & React 19',
         'integrating Stripe, Razorpay & Braintree',
         'growing UtilityBox — 27 free tools'
     ];
@@ -1656,7 +1687,8 @@
     // ── Mobile nav ──
     const navbar = document.getElementById('navbar');
     const navLinks = document.getElementById('navLinks');
-    document.getElementById('navToggle').addEventListener('click', () => navLinks.classList.toggle('open'));
+    const navToggle = document.getElementById('navToggle');
+    navToggle.addEventListener('click', () => { navToggle.textContent = navLinks.classList.toggle('open') ? '✕' : '☰'; });
 
     // ── Smooth scroll ──
     document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -1664,7 +1696,7 @@
             const target = document.querySelector(a.getAttribute('href'));
             if (!target) return;
             e.preventDefault();
-            navLinks.classList.remove('open');
+            navLinks.classList.remove('open'); navToggle.textContent = '☰';
             target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
         });
     });
@@ -1676,7 +1708,7 @@
     const timeline   = document.getElementById('timeline');
     const tlFill     = document.getElementById('tlFill');
     const stackItems = [...document.querySelectorAll('.stack-item')];
-    const stackMQ    = window.matchMedia('(max-width: 860px)');
+    const stackMQ    = window.matchMedia('(max-width: 1024px)');
 
     function onScroll() {
         const max = document.documentElement.scrollHeight - innerHeight;
@@ -1729,8 +1761,9 @@
             }));
         }
 
-        addEventListener('resize', resize);
-        resize();
+        let lastW = 0;
+        addEventListener('resize', () => { if (innerWidth !== lastW) { lastW = innerWidth; resize(); } });
+        lastW = innerWidth; resize();
 
         let mx = 0, my = 0;
         addEventListener('mousemove', e => { mx = e.clientX / W - 0.5; my = e.clientY / H - 0.5; }, { passive: true });
