@@ -1,0 +1,19 @@
+index.html
+  s_11f4bece5de1d6::t_3b37e6f971fade 1616,1618
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "73eb8956e8bc80fdbee237f07d8e19203df26ef2",
+  "prompts": {},
+  "sessions": {
+    "s_11f4bece5de1d6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "db0dff31-f062-4c5a-b3c1-6c706ef3eb6d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Lalchand Prajapat <lalchand.prajapat@noitechnologies.com>"
+    }
+  }
+}
